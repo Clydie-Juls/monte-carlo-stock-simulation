@@ -1,4 +1,0 @@
-/Users/cjmarindo/Developer/mc-stock-sim/build/CMakeFiles/MonteCarloStockSimulator.dir
-/Users/cjmarindo/Developer/mc-stock-sim/build/CMakeFiles/run.dir
-/Users/cjmarindo/Developer/mc-stock-sim/build/CMakeFiles/edit_cache.dir
-/Users/cjmarindo/Developer/mc-stock-sim/build/CMakeFiles/rebuild_cache.dir
