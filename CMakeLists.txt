@@ -28,3 +28,12 @@ add_custom_target(run
     DEPENDS MonteCarloStockSimulator
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
+
+add_custom_target(gen_proto
+    COMMAND protobuf::protoc
+        -I ${CMAKE_SOURCE_DIR}/proto
+        --grpc_out=${CMAKE_SOURCE_DIR}/src/generated
+        --cpp_out=${CMAKE_SOURCE_DIR}/src/generated
+        --plugin=protoc-gen-grpc=`which grpc_cpp_plugin`
+        ${CMAKE_SOURCE_DIR}/proto/stock.proto
+)
