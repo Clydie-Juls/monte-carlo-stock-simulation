@@ -4,6 +4,7 @@ package stock;
 
 service StockService {
     rpc Simulate(StockRequest) returns (stream StockResponse);
+    rpc RequestStockHistoryData(StockRequest) returns (stream StockHistoryResponse);
 }
 
 message StockRequest {
@@ -19,7 +20,7 @@ message StockRequest {
  }
 
 message StockHistoryResponse {
-  repeated StockHistory stockhistories = 1;
+  repeated StockHistory stock_histories = 1;
 }
 
 message Path {
