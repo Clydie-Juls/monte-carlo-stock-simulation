@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package stock;
+
+service StockHistoryService {
+  rpc RequestStockHistoryData(StockHistoryRequest)
+      returns (stream StockHistoryResponse);
+}
+
+message StockHistoryRequest {
+  string ticker = 1;
+  string interval = 2;
+}
+
+message StockInfo {
+  double close = 1;
+}
+
+message StockHistory {
+  string timestamp = 1;
+  StockInfo stock_info = 2;
+}
+
+message StockHistoryResponse {
+  repeated StockHistory stock_histories = 1;
+}

@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package stock;
+
+service StockSimulationService {
+  rpc Simulate(SimulationRequest)
+      returns (stream SimulationResponse);
+}
+
+message SimulationRequest {
+  string ticker = 1;
+  string interval = 2;
+  int32 num_paths = 3;
+  int32 num_steps = 4;
+}
+
+message Path {
+  repeated double steps = 1;
+}
+
+message SimulationResponse {
+  repeated Path paths = 1;
+}
