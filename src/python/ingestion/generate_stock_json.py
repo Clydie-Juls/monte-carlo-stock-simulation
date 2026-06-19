@@ -1,22 +1,20 @@
-import sys
 from datetime import datetime, timedelta
-from pathlib import Path
 
 import pandas as pd
 import yfinance as yf
 
-ticker_symbol = sys.argv[1]
-interval = sys.argv[2]
+from generated import stock_pb2
 
-stock_folder = Path("stocks")
-stock_folder.mkdir(parents=True, exist_ok=True)
+def getHistoricalStockData(ticker_symbol, interval):
+    endTime = datetime.now().date()
+    startTime = (datetime.now() - timedelta(days=365)).date()
+    stock = yf.download(ticker_symbol, start=startTime, end=endTime, interval=interval)
 
-endTime = datetime.now().date()
-startTime = (datetime.now() - timedelta(days=365)).date()
-aapl = yf.download(ticker_symbol, start=startTime, end=endTime, interval=interval)
+    if stock is None:
+        return
 
-if isinstance(aapl.columns, pd.MultiIndex):
-    aapl.columns = aapl.columns.get_level_values(0)
+    if isinstance(stock.columns, pd.MultiIndex):
+        stock.columns = stock.columns.get_level_values(0)
 
-aapl_new = aapl[["High", "Low", "Close", "Open"]]
-aapl_new.to_json(f"stocks/{ticker_symbol}.json", orient="index")
+    aapl_new = stock[["High", "Low", "Close", "Open"]]
+    return aapl_new;
