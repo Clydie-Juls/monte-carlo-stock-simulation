@@ -24,6 +24,7 @@ namespace stock {
 
 static const char* StockService_method_names[] = {
   "/stock.StockService/Simulate",
+  "/stock.StockService/RequestStockHistoryData",
 };
 
 std::unique_ptr< StockService::Stub> StockService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -34,6 +35,7 @@ std::unique_ptr< StockService::Stub> StockService::NewStub(const std::shared_ptr
 
 StockService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_Simulate_(StockService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_RequestStockHistoryData_(StockService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
 ::grpc::ClientReader< ::stock::StockResponse>* StockService::Stub::SimulateRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request) {
@@ -52,6 +54,22 @@ void StockService::Stub::async::Simulate(::grpc::ClientContext* context, const :
   return ::grpc::internal::ClientAsyncReaderFactory< ::stock::StockResponse>::Create(channel_.get(), cq, rpcmethod_Simulate_, context, request, false, nullptr);
 }
 
+::grpc::ClientReader< ::stock::StockHistoryResponse>* StockService::Stub::RequestStockHistoryDataRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::stock::StockHistoryResponse>::Create(channel_.get(), rpcmethod_RequestStockHistoryData_, context, request);
+}
+
+void StockService::Stub::async::RequestStockHistoryData(::grpc::ClientContext* context, const ::stock::StockRequest* request, ::grpc::ClientReadReactor< ::stock::StockHistoryResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::stock::StockHistoryResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_RequestStockHistoryData_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::stock::StockHistoryResponse>* StockService::Stub::AsyncRequestStockHistoryDataRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::stock::StockHistoryResponse>::Create(channel_.get(), cq, rpcmethod_RequestStockHistoryData_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::stock::StockHistoryResponse>* StockService::Stub::PrepareAsyncRequestStockHistoryDataRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::stock::StockHistoryResponse>::Create(channel_.get(), cq, rpcmethod_RequestStockHistoryData_, context, request, false, nullptr);
+}
+
 StockService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       StockService_method_names[0],
@@ -63,12 +81,29 @@ StockService::Service::Service() {
              ::grpc::ServerWriter<::stock::StockResponse>* writer) {
                return service->Simulate(ctx, req, writer);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      StockService_method_names[1],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< StockService::Service, ::stock::StockRequest, ::stock::StockHistoryResponse>(
+          [](StockService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::stock::StockRequest* req,
+             ::grpc::ServerWriter<::stock::StockHistoryResponse>* writer) {
+               return service->RequestStockHistoryData(ctx, req, writer);
+             }, this)));
 }
 
 StockService::Service::~Service() {
 }
 
 ::grpc::Status StockService::Service::Simulate(::grpc::ServerContext* context, const ::stock::StockRequest* request, ::grpc::ServerWriter< ::stock::StockResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status StockService::Service::RequestStockHistoryData(::grpc::ServerContext* context, const ::stock::StockRequest* request, ::grpc::ServerWriter< ::stock::StockHistoryResponse>* writer) {
   (void) context;
   (void) request;
   (void) writer;

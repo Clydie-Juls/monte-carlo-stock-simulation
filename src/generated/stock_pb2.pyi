@@ -18,19 +18,25 @@ class StockRequest(_message.Message):
     num_steps: int
     def __init__(self, ticker: _Optional[str] = ..., interval: _Optional[str] = ..., num_paths: _Optional[int] = ..., num_steps: _Optional[int] = ...) -> None: ...
 
+class StockInfo(_message.Message):
+    __slots__ = ("close",)
+    CLOSE_FIELD_NUMBER: _ClassVar[int]
+    close: float
+    def __init__(self, close: _Optional[float] = ...) -> None: ...
+
 class StockHistory(_message.Message):
-    __slots__ = ("timestamp", "steps")
+    __slots__ = ("timestamp", "stock_info")
     TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
-    STEPS_FIELD_NUMBER: _ClassVar[int]
+    STOCK_INFO_FIELD_NUMBER: _ClassVar[int]
     timestamp: str
-    steps: float
-    def __init__(self, timestamp: _Optional[str] = ..., steps: _Optional[float] = ...) -> None: ...
+    stock_info: StockInfo
+    def __init__(self, timestamp: _Optional[str] = ..., stock_info: _Optional[_Union[StockInfo, _Mapping]] = ...) -> None: ...
 
 class StockHistoryResponse(_message.Message):
-    __slots__ = ("stockhistories",)
-    STOCKHISTORIES_FIELD_NUMBER: _ClassVar[int]
-    stockhistories: _containers.RepeatedCompositeFieldContainer[StockHistory]
-    def __init__(self, stockhistories: _Optional[_Iterable[_Union[StockHistory, _Mapping]]] = ...) -> None: ...
+    __slots__ = ("stock_histories",)
+    STOCK_HISTORIES_FIELD_NUMBER: _ClassVar[int]
+    stock_histories: _containers.RepeatedCompositeFieldContainer[StockHistory]
+    def __init__(self, stock_histories: _Optional[_Iterable[_Union[StockHistory, _Mapping]]] = ...) -> None: ...
 
 class Path(_message.Message):
     __slots__ = ("steps",)

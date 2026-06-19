@@ -45,10 +45,20 @@ class StockService final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::stock::StockResponse>> PrepareAsyncSimulate(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::stock::StockResponse>>(PrepareAsyncSimulateRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::stock::StockHistoryResponse>> RequestStockHistoryData(::grpc::ClientContext* context, const ::stock::StockRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::stock::StockHistoryResponse>>(RequestStockHistoryDataRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::stock::StockHistoryResponse>> AsyncRequestStockHistoryData(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::stock::StockHistoryResponse>>(AsyncRequestStockHistoryDataRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::stock::StockHistoryResponse>> PrepareAsyncRequestStockHistoryData(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::stock::StockHistoryResponse>>(PrepareAsyncRequestStockHistoryDataRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
       virtual void Simulate(::grpc::ClientContext* context, const ::stock::StockRequest* request, ::grpc::ClientReadReactor< ::stock::StockResponse>* reactor) = 0;
+      virtual void RequestStockHistoryData(::grpc::ClientContext* context, const ::stock::StockRequest* request, ::grpc::ClientReadReactor< ::stock::StockHistoryResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -57,6 +67,9 @@ class StockService final {
     virtual ::grpc::ClientReaderInterface< ::stock::StockResponse>* SimulateRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::stock::StockResponse>* AsyncSimulateRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::stock::StockResponse>* PrepareAsyncSimulateRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::stock::StockHistoryResponse>* RequestStockHistoryDataRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::stock::StockHistoryResponse>* AsyncRequestStockHistoryDataRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::stock::StockHistoryResponse>* PrepareAsyncRequestStockHistoryDataRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -70,10 +83,20 @@ class StockService final {
     std::unique_ptr< ::grpc::ClientAsyncReader< ::stock::StockResponse>> PrepareAsyncSimulate(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReader< ::stock::StockResponse>>(PrepareAsyncSimulateRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReader< ::stock::StockHistoryResponse>> RequestStockHistoryData(::grpc::ClientContext* context, const ::stock::StockRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::stock::StockHistoryResponse>>(RequestStockHistoryDataRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::stock::StockHistoryResponse>> AsyncRequestStockHistoryData(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::stock::StockHistoryResponse>>(AsyncRequestStockHistoryDataRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::stock::StockHistoryResponse>> PrepareAsyncRequestStockHistoryData(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::stock::StockHistoryResponse>>(PrepareAsyncRequestStockHistoryDataRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
       void Simulate(::grpc::ClientContext* context, const ::stock::StockRequest* request, ::grpc::ClientReadReactor< ::stock::StockResponse>* reactor) override;
+      void RequestStockHistoryData(::grpc::ClientContext* context, const ::stock::StockRequest* request, ::grpc::ClientReadReactor< ::stock::StockHistoryResponse>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -88,7 +111,11 @@ class StockService final {
     ::grpc::ClientReader< ::stock::StockResponse>* SimulateRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request) override;
     ::grpc::ClientAsyncReader< ::stock::StockResponse>* AsyncSimulateRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
     ::grpc::ClientAsyncReader< ::stock::StockResponse>* PrepareAsyncSimulateRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::stock::StockHistoryResponse>* RequestStockHistoryDataRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request) override;
+    ::grpc::ClientAsyncReader< ::stock::StockHistoryResponse>* AsyncRequestStockHistoryDataRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::stock::StockHistoryResponse>* PrepareAsyncRequestStockHistoryDataRaw(::grpc::ClientContext* context, const ::stock::StockRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_Simulate_;
+    const ::grpc::internal::RpcMethod rpcmethod_RequestStockHistoryData_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -97,6 +124,7 @@ class StockService final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status Simulate(::grpc::ServerContext* context, const ::stock::StockRequest* request, ::grpc::ServerWriter< ::stock::StockResponse>* writer);
+    virtual ::grpc::Status RequestStockHistoryData(::grpc::ServerContext* context, const ::stock::StockRequest* request, ::grpc::ServerWriter< ::stock::StockHistoryResponse>* writer);
   };
   template <class BaseClass>
   class WithAsyncMethod_Simulate : public BaseClass {
@@ -118,7 +146,27 @@ class StockService final {
       ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Simulate<Service > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_RequestStockHistoryData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_RequestStockHistoryData() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_RequestStockHistoryData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RequestStockHistoryData(::grpc::ServerContext* /*context*/, const ::stock::StockRequest* /*request*/, ::grpc::ServerWriter< ::stock::StockHistoryResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRequestStockHistoryData(::grpc::ServerContext* context, ::stock::StockRequest* request, ::grpc::ServerAsyncWriter< ::stock::StockHistoryResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(1, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_Simulate<WithAsyncMethod_RequestStockHistoryData<Service > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_Simulate : public BaseClass {
    private:
@@ -141,7 +189,29 @@ class StockService final {
     virtual ::grpc::ServerWriteReactor< ::stock::StockResponse>* Simulate(
       ::grpc::CallbackServerContext* /*context*/, const ::stock::StockRequest* /*request*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Simulate<Service > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_RequestStockHistoryData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_RequestStockHistoryData() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::stock::StockRequest, ::stock::StockHistoryResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::stock::StockRequest* request) { return this->RequestStockHistoryData(context, request); }));
+    }
+    ~WithCallbackMethod_RequestStockHistoryData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RequestStockHistoryData(::grpc::ServerContext* /*context*/, const ::stock::StockRequest* /*request*/, ::grpc::ServerWriter< ::stock::StockHistoryResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::stock::StockHistoryResponse>* RequestStockHistoryData(
+      ::grpc::CallbackServerContext* /*context*/, const ::stock::StockRequest* /*request*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_Simulate<WithCallbackMethod_RequestStockHistoryData<Service > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Simulate : public BaseClass {
@@ -156,6 +226,23 @@ class StockService final {
     }
     // disable synchronous version of this method
     ::grpc::Status Simulate(::grpc::ServerContext* /*context*/, const ::stock::StockRequest* /*request*/, ::grpc::ServerWriter< ::stock::StockResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_RequestStockHistoryData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_RequestStockHistoryData() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_RequestStockHistoryData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RequestStockHistoryData(::grpc::ServerContext* /*context*/, const ::stock::StockRequest* /*request*/, ::grpc::ServerWriter< ::stock::StockHistoryResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -181,6 +268,26 @@ class StockService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_RequestStockHistoryData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_RequestStockHistoryData() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_RequestStockHistoryData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RequestStockHistoryData(::grpc::ServerContext* /*context*/, const ::stock::StockRequest* /*request*/, ::grpc::ServerWriter< ::stock::StockHistoryResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRequestStockHistoryData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(1, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_Simulate : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -200,6 +307,28 @@ class StockService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* Simulate(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_RequestStockHistoryData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_RequestStockHistoryData() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->RequestStockHistoryData(context, request); }));
+    }
+    ~WithRawCallbackMethod_RequestStockHistoryData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RequestStockHistoryData(::grpc::ServerContext* /*context*/, const ::stock::StockRequest* /*request*/, ::grpc::ServerWriter< ::stock::StockHistoryResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* RequestStockHistoryData(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
   typedef Service StreamedUnaryService;
@@ -230,8 +359,35 @@ class StockService final {
     // replace default version of method with split streamed
     virtual ::grpc::Status StreamedSimulate(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::stock::StockRequest,::stock::StockResponse>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_Simulate<Service > SplitStreamedService;
-  typedef WithSplitStreamingMethod_Simulate<Service > StreamedService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_RequestStockHistoryData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_RequestStockHistoryData() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::stock::StockRequest, ::stock::StockHistoryResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerSplitStreamer<
+                     ::stock::StockRequest, ::stock::StockHistoryResponse>* streamer) {
+                       return this->StreamedRequestStockHistoryData(context,
+                         streamer);
+                  }));
+    }
+    ~WithSplitStreamingMethod_RequestStockHistoryData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status RequestStockHistoryData(::grpc::ServerContext* /*context*/, const ::stock::StockRequest* /*request*/, ::grpc::ServerWriter< ::stock::StockHistoryResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedRequestStockHistoryData(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::stock::StockRequest,::stock::StockHistoryResponse>* server_split_streamer) = 0;
+  };
+  typedef WithSplitStreamingMethod_Simulate<WithSplitStreamingMethod_RequestStockHistoryData<Service > > SplitStreamedService;
+  typedef WithSplitStreamingMethod_Simulate<WithSplitStreamingMethod_RequestStockHistoryData<Service > > StreamedService;
 };
 
 }  // namespace stock
