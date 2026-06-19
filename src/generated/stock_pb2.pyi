@@ -18,6 +18,20 @@ class StockRequest(_message.Message):
     num_steps: int
     def __init__(self, ticker: _Optional[str] = ..., interval: _Optional[str] = ..., num_paths: _Optional[int] = ..., num_steps: _Optional[int] = ...) -> None: ...
 
+class StockHistory(_message.Message):
+    __slots__ = ("timestamp", "steps")
+    TIMESTAMP_FIELD_NUMBER: _ClassVar[int]
+    STEPS_FIELD_NUMBER: _ClassVar[int]
+    timestamp: str
+    steps: float
+    def __init__(self, timestamp: _Optional[str] = ..., steps: _Optional[float] = ...) -> None: ...
+
+class StockHistoryResponse(_message.Message):
+    __slots__ = ("stockhistories",)
+    STOCKHISTORIES_FIELD_NUMBER: _ClassVar[int]
+    stockhistories: _containers.RepeatedCompositeFieldContainer[StockHistory]
+    def __init__(self, stockhistories: _Optional[_Iterable[_Union[StockHistory, _Mapping]]] = ...) -> None: ...
+
 class Path(_message.Message):
     __slots__ = ("steps",)
     STEPS_FIELD_NUMBER: _ClassVar[int]

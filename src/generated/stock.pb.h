@@ -62,6 +62,22 @@ extern const ::google::protobuf::internal::ClassDataFull Path_class_data_;
 #else
 extern const PathGlobalsTypeInternal Path_globals_;
 #endif  // PROTOBUF_MESSAGE_GLOBALS
+class StockHistory;
+struct StockHistoryGlobalsTypeInternal;
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+extern StockHistoryGlobalsTypeInternal StockHistory_globals_;
+extern const ::google::protobuf::internal::ClassDataFull StockHistory_class_data_;
+#else
+extern const StockHistoryGlobalsTypeInternal StockHistory_globals_;
+#endif  // PROTOBUF_MESSAGE_GLOBALS
+class StockHistoryResponse;
+struct StockHistoryResponseGlobalsTypeInternal;
+#ifndef PROTOBUF_MESSAGE_GLOBALS
+extern StockHistoryResponseGlobalsTypeInternal StockHistoryResponse_globals_;
+extern const ::google::protobuf::internal::ClassDataFull StockHistoryResponse_class_data_;
+#else
+extern const StockHistoryResponseGlobalsTypeInternal StockHistoryResponse_globals_;
+#endif  // PROTOBUF_MESSAGE_GLOBALS
 class StockRequest;
 struct StockRequestGlobalsTypeInternal;
 #ifndef PROTOBUF_MESSAGE_GLOBALS
@@ -338,6 +354,224 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED StockRequest final : public ::googl
 };
 // -------------------------------------------------------------------
 
+class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED StockHistory final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:stock.StockHistory) */ {
+ public:
+  inline StockHistory() : StockHistory(nullptr) {}
+  ~StockHistory() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(StockHistory* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(StockHistory));
+  }
+#endif
+
+  template <typename = void>
+  explicit constexpr StockHistory(::google::protobuf::internal::ConstantInitialized,
+                           const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+                               class_data);
+
+  inline StockHistory(const StockHistory& from) : StockHistory(nullptr, from) {}
+  inline StockHistory(StockHistory&& from) noexcept : StockHistory(nullptr, ::std::move(from)) {}
+  inline StockHistory& operator=(const StockHistory& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline StockHistory& operator=(StockHistory&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  [[nodiscard]] inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  [[nodiscard]] inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL
+  mutable_unknown_fields() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  [[nodiscard]] static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  [[nodiscard]] static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL
+  GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  [[nodiscard]] static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  [[nodiscard]] static const StockHistory& default_instance() {
+    return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<StockHistory>(&StockHistory_globals_);
+  }
+  static constexpr int kIndexInFileMessages = 1;
+  friend void swap(StockHistory& a, StockHistory& b) { a.Swap(&b); }
+  inline void Swap(StockHistory* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(StockHistory* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  [[nodiscard]] StockHistory* PROTOBUF_NONNULL
+  New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<StockHistory>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const StockHistory& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const StockHistory& from) { StockHistory::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  [[nodiscard]] bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  [[nodiscard]] static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  [[nodiscard]] static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  [[nodiscard]] ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  [[nodiscard]] ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  [[nodiscard]] ::size_t ByteSizeLong() const final;
+  [[nodiscard]] ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  [[nodiscard]] int GetCachedSize() const {
+    return _impl_._cached_size_.Get();
+  }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(StockHistory* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "stock.StockHistory"; }
+
+  explicit StockHistory(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  StockHistory(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const StockHistory& from);
+  StockHistory(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, StockHistory&& from) noexcept
+      : StockHistory(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_(
+      const MessageLite& prototype,
+      const ::google::protobuf::internal::TcParseTableBase* PROTOBUF_NULLABLE tc_table = nullptr);
+
+  [[nodiscard]] ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kTimestampFieldNumber = 1,
+    kStepsFieldNumber = 2,
+  };
+  // string timestamp = 1;
+  void clear_timestamp() ;
+  [[nodiscard]] const ::std::string& timestamp() const;
+  template <typename Arg_ = const ::std::string&, typename... Args_>
+  void set_timestamp(Arg_&& arg, Args_... args);
+  ::std::string* PROTOBUF_NONNULL mutable_timestamp();
+  [[nodiscard]] ::std::string* PROTOBUF_NULLABLE release_timestamp();
+  void set_allocated_timestamp(::std::string* PROTOBUF_NULLABLE value);
+
+  private:
+  const ::std::string& _internal_timestamp() const;
+  PROTOBUF_ALWAYS_INLINE void _internal_set_timestamp(const ::std::string& value);
+  ::std::string* PROTOBUF_NONNULL _internal_mutable_timestamp();
+
+  public:
+  // double steps = 2;
+  void clear_steps() ;
+  [[nodiscard]] double steps() const;
+  void set_steps(double value);
+
+  private:
+  double _internal_steps() const;
+  void _internal_set_steps(double value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:stock.StockHistory)
+ private:
+  class _Internal;
+  using ParseTableT_ =
+      ::google::protobuf::internal::TcParseTable<1, 2,
+                          0, 36,
+                          2>;
+  static constexpr ParseTableT_ InternalGenerateParseTable_(
+      const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL class_data);
+  friend class ::google::protobuf::internal::TcParser;
+  #ifndef PROTOBUF_MESSAGE_GLOBALS
+  static const ParseTableT_ _table_;
+  #endif
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  friend ::google::protobuf::internal::PrivateAccess;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                                    ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const StockHistory& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr timestamp_;
+    double steps_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_stock_2eproto;
+};
+// -------------------------------------------------------------------
+
 class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED Path final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:stock.Path) */ {
  public:
@@ -394,7 +628,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED Path final : public ::google::proto
   [[nodiscard]] static const Path& default_instance() {
     return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<Path>(&Path_globals_);
   }
-  static constexpr int kIndexInFileMessages = 1;
+  static constexpr int kIndexInFileMessages = 3;
   friend void swap(Path& a, Path& b) { a.Swap(&b); }
   inline void Swap(Path* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -605,7 +839,7 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED StockResponse final : public ::goog
   [[nodiscard]] static const StockResponse& default_instance() {
     return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<StockResponse>(&StockResponse_globals_);
   }
-  static constexpr int kIndexInFileMessages = 2;
+  static constexpr int kIndexInFileMessages = 4;
   friend void swap(StockResponse& a, StockResponse& b) { a.Swap(&b); }
   inline void Swap(StockResponse* PROTOBUF_NONNULL other) {
     if (other == this) return;
@@ -754,6 +988,218 @@ class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED StockResponse final : public ::goog
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::RepeatedPtrField< ::stock::Path > paths_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_stock_2eproto;
+};
+// -------------------------------------------------------------------
+
+class  PROTOBUF_FUTURE_ADD_EARLY_WARN_UNUSED StockHistoryResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:stock.StockHistoryResponse) */ {
+ public:
+  inline StockHistoryResponse() : StockHistoryResponse(nullptr) {}
+  ~StockHistoryResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(StockHistoryResponse* PROTOBUF_NONNULL msg, ::std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(StockHistoryResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit constexpr StockHistoryResponse(::google::protobuf::internal::ConstantInitialized,
+                           const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL
+                               class_data);
+
+  inline StockHistoryResponse(const StockHistoryResponse& from) : StockHistoryResponse(nullptr, from) {}
+  inline StockHistoryResponse(StockHistoryResponse&& from) noexcept : StockHistoryResponse(nullptr, ::std::move(from)) {}
+  inline StockHistoryResponse& operator=(const StockHistoryResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline StockHistoryResponse& operator=(StockHistoryResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  [[nodiscard]] inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  [[nodiscard]] inline ::google::protobuf::UnknownFieldSet* PROTOBUF_NONNULL
+  mutable_unknown_fields() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  [[nodiscard]] static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL descriptor() {
+    return GetDescriptor();
+  }
+  [[nodiscard]] static const ::google::protobuf::Descriptor* PROTOBUF_NONNULL
+  GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  [[nodiscard]] static const ::google::protobuf::Reflection* PROTOBUF_NONNULL GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  [[nodiscard]] static const StockHistoryResponse& default_instance() {
+    return *::google::protobuf::internal::MessageGlobalsBase::ToDefaultInstance<StockHistoryResponse>(&StockHistoryResponse_globals_);
+  }
+  static constexpr int kIndexInFileMessages = 2;
+  friend void swap(StockHistoryResponse& a, StockHistoryResponse& b) { a.Swap(&b); }
+  inline void Swap(StockHistoryResponse* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(StockHistoryResponse* PROTOBUF_NONNULL other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  [[nodiscard]] StockHistoryResponse* PROTOBUF_NONNULL
+  New(::google::protobuf::Arena* PROTOBUF_NULLABLE arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<StockHistoryResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const StockHistoryResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const StockHistoryResponse& from) { StockHistoryResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(::google::protobuf::MessageLite& to_msg,
+                        const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  [[nodiscard]] bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  [[nodiscard]] static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  [[nodiscard]] static ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      const ::google::protobuf::MessageLite& msg, ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream);
+
+  public:
+  [[nodiscard]] ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  [[nodiscard]] ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  [[nodiscard]] ::size_t ByteSizeLong() const final;
+  [[nodiscard]] ::uint8_t* PROTOBUF_NONNULL _InternalSerialize(
+      ::uint8_t* PROTOBUF_NONNULL target,
+      ::google::protobuf::io::EpsCopyOutputStream* PROTOBUF_NONNULL stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  [[nodiscard]] int GetCachedSize() const {
+    return _impl_._cached_size_.Get();
+  }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(StockHistoryResponse* PROTOBUF_NONNULL other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "stock.StockHistoryResponse"; }
+
+  explicit StockHistoryResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  StockHistoryResponse(::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const StockHistoryResponse& from);
+  StockHistoryResponse(
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, StockHistoryResponse&& from) noexcept
+      : StockHistoryResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL GetClassData() const PROTOBUF_FINAL;
+  static void* PROTOBUF_NONNULL PlacementNew_(
+      const void* PROTOBUF_NONNULL, void* PROTOBUF_NONNULL mem,
+      ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+  static constexpr auto InternalNewImpl_();
+
+ public:
+  static constexpr auto InternalGenerateClassData_(
+      const MessageLite& prototype,
+      const ::google::protobuf::internal::TcParseTableBase* PROTOBUF_NULLABLE tc_table = nullptr);
+
+  [[nodiscard]] ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kStockhistoriesFieldNumber = 1,
+  };
+  // repeated .stock.StockHistory stockhistories = 1;
+  [[nodiscard]] int stockhistories_size()
+      const;
+  private:
+  int _internal_stockhistories_size() const;
+
+  public:
+  void clear_stockhistories() ;
+  [[nodiscard]] const ::stock::StockHistory& stockhistories(int index) const;
+  [[nodiscard]] ::stock::StockHistory* PROTOBUF_NONNULL mutable_stockhistories(int index);
+  ::stock::StockHistory* PROTOBUF_NONNULL add_stockhistories();
+  [[nodiscard]] const ::google::protobuf::RepeatedPtrField<::stock::StockHistory>&
+  stockhistories() const;
+  [[nodiscard]] ::google::protobuf::RepeatedPtrField<::stock::StockHistory>* PROTOBUF_NONNULL
+  mutable_stockhistories();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::stock::StockHistory>& _internal_stockhistories() const;
+  ::google::protobuf::RepeatedPtrField<::stock::StockHistory>* PROTOBUF_NONNULL _internal_mutable_stockhistories();
+
+  public:
+  // @@protoc_insertion_point(class_scope:stock.StockHistoryResponse)
+ private:
+  class _Internal;
+  using ParseTableT_ =
+      ::google::protobuf::internal::TcParseTable<0, 1,
+                          1, 0,
+                          2>;
+  static constexpr ParseTableT_ InternalGenerateParseTable_(
+      const ::google::protobuf::internal::ClassData* PROTOBUF_NONNULL class_data);
+  friend class ::google::protobuf::internal::TcParser;
+  #ifndef PROTOBUF_MESSAGE_GLOBALS
+  static const ParseTableT_ _table_;
+  #endif
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  friend ::google::protobuf::internal::PrivateAccess;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                                    ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena);
+    inline explicit Impl_(
+        ::google::protobuf::internal::InternalVisibility visibility,
+        ::google::protobuf::Arena* PROTOBUF_NULLABLE arena, const Impl_& from,
+        const StockHistoryResponse& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedPtrField< ::stock::StockHistory > stockhistories_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -950,6 +1396,157 @@ inline ::int32_t StockRequest::_internal_num_steps() const {
 inline void StockRequest::_internal_set_num_steps(::int32_t value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.num_steps_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// StockHistory
+
+// string timestamp = 1;
+inline void StockHistory::clear_timestamp() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.timestamp_.ClearToEmpty();
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+}
+inline const ::std::string& StockHistory::timestamp() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:stock.StockHistory.timestamp)
+  return _internal_timestamp();
+}
+template <typename Arg_, typename... Args_>
+PROTOBUF_ALWAYS_INLINE void StockHistory::set_timestamp(Arg_&& arg, Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  _impl_.timestamp_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:stock.StockHistory.timestamp)
+}
+inline ::std::string* PROTOBUF_NONNULL StockHistory::mutable_timestamp()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  ::std::string* _s = _internal_mutable_timestamp();
+  // @@protoc_insertion_point(field_mutable:stock.StockHistory.timestamp)
+  return _s;
+}
+inline const ::std::string& StockHistory::_internal_timestamp() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.timestamp_.Get();
+}
+inline void StockHistory::_internal_set_timestamp(const ::std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.timestamp_.Set(value, GetArena());
+}
+inline ::std::string* PROTOBUF_NONNULL StockHistory::_internal_mutable_timestamp() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.timestamp_.Mutable( GetArena());
+}
+inline ::std::string* PROTOBUF_NULLABLE StockHistory::release_timestamp() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:stock.StockHistory.timestamp)
+  if (!CheckHasBit(_impl_._has_bits_[0], 0x00000001U)) {
+    return nullptr;
+  }
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  auto* released = _impl_.timestamp_.Release();
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString()) {
+    _impl_.timestamp_.Set("", GetArena());
+  }
+  return released;
+}
+inline void StockHistory::set_allocated_timestamp(::std::string* PROTOBUF_NULLABLE value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value != nullptr) {
+    SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  } else {
+    ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+  }
+  _impl_.timestamp_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.timestamp_.IsDefault()) {
+    _impl_.timestamp_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:stock.StockHistory.timestamp)
+}
+
+// double steps = 2;
+inline void StockHistory::clear_steps() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.steps_ = 0;
+  ClearHasBit(_impl_._has_bits_[0], 0x00000002U);
+}
+inline double StockHistory::steps() const {
+  // @@protoc_insertion_point(field_get:stock.StockHistory.steps)
+  return _internal_steps();
+}
+inline void StockHistory::set_steps(double value) {
+  _internal_set_steps(value);
+  SetHasBit(_impl_._has_bits_[0], 0x00000002U);
+  // @@protoc_insertion_point(field_set:stock.StockHistory.steps)
+}
+inline double StockHistory::_internal_steps() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.steps_;
+}
+inline void StockHistory::_internal_set_steps(double value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.steps_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// StockHistoryResponse
+
+// repeated .stock.StockHistory stockhistories = 1;
+inline int StockHistoryResponse::_internal_stockhistories_size() const {
+  return _internal_stockhistories().size();
+}
+inline int StockHistoryResponse::stockhistories_size() const {
+  return _internal_stockhistories_size();
+}
+inline void StockHistoryResponse::clear_stockhistories() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.stockhistories_.Clear();
+  ClearHasBit(_impl_._has_bits_[0], 0x00000001U);
+}
+inline const ::stock::StockHistory& StockHistoryResponse::stockhistories(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:stock.StockHistoryResponse.stockhistories)
+  return _internal_stockhistories().Get(index);
+}
+inline ::stock::StockHistory* PROTOBUF_NONNULL StockHistoryResponse::mutable_stockhistories(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:stock.StockHistoryResponse.stockhistories)
+  return _internal_mutable_stockhistories()->Mutable(index);
+}
+inline ::stock::StockHistory* PROTOBUF_NONNULL StockHistoryResponse::add_stockhistories()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::stock::StockHistory* _add =
+      _internal_mutable_stockhistories()->InternalAddWithArena(
+          ::google::protobuf::MessageLite::internal_visibility(), GetArena());
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  // @@protoc_insertion_point(field_add:stock.StockHistoryResponse.stockhistories)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::stock::StockHistory>& StockHistoryResponse::stockhistories() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:stock.StockHistoryResponse.stockhistories)
+  return _internal_stockhistories();
+}
+inline ::google::protobuf::RepeatedPtrField<::stock::StockHistory>* PROTOBUF_NONNULL
+StockHistoryResponse::mutable_stockhistories() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  SetHasBit(_impl_._has_bits_[0], 0x00000001U);
+  // @@protoc_insertion_point(field_mutable_list:stock.StockHistoryResponse.stockhistories)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_stockhistories();
+}
+inline const ::google::protobuf::RepeatedPtrField<::stock::StockHistory>&
+StockHistoryResponse::_internal_stockhistories() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.stockhistories_;
+}
+inline ::google::protobuf::RepeatedPtrField<::stock::StockHistory>* PROTOBUF_NONNULL
+StockHistoryResponse::_internal_mutable_stockhistories() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.stockhistories_;
 }
 
 // -------------------------------------------------------------------

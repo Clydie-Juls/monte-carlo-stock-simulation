@@ -13,6 +13,15 @@ message StockRequest {
     int32 num_steps = 4;
 }
 
+ message StockHistory {
+    string timestamp = 1;
+    double steps = 2;
+ }
+
+message StockHistoryResponse {
+  repeated StockHistory stockhistories = 1;
+}
+
 message Path {
     repeated double steps = 1;
 }

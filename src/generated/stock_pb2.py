@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bstock.proto\x12\x05stock\"V\n\x0cStockRequest\x12\x0e\n\x06ticker\x18\x01 \x01(\t\x12\x10\n\x08interval\x18\x02 \x01(\t\x12\x11\n\tnum_paths\x18\x03 \x01(\x05\x12\x11\n\tnum_steps\x18\x04 \x01(\x05\"\x15\n\x04Path\x12\r\n\x05steps\x18\x01 \x03(\x01\"+\n\rStockResponse\x12\x1a\n\x05paths\x18\x01 \x03(\x0b\x32\x0b.stock.Path2G\n\x0cStockService\x12\x37\n\x08Simulate\x12\x13.stock.StockRequest\x1a\x14.stock.StockResponse0\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bstock.proto\x12\x05stock\"V\n\x0cStockRequest\x12\x0e\n\x06ticker\x18\x01 \x01(\t\x12\x10\n\x08interval\x18\x02 \x01(\t\x12\x11\n\tnum_paths\x18\x03 \x01(\x05\x12\x11\n\tnum_steps\x18\x04 \x01(\x05\"0\n\x0cStockHistory\x12\x11\n\ttimestamp\x18\x01 \x01(\t\x12\r\n\x05steps\x18\x02 \x01(\x01\"C\n\x14StockHistoryResponse\x12+\n\x0estockhistories\x18\x01 \x03(\x0b\x32\x13.stock.StockHistory\"\x15\n\x04Path\x12\r\n\x05steps\x18\x01 \x03(\x01\"+\n\rStockResponse\x12\x1a\n\x05paths\x18\x01 \x03(\x0b\x32\x0b.stock.Path2G\n\x0cStockService\x12\x37\n\x08Simulate\x12\x13.stock.StockRequest\x1a\x14.stock.StockResponse0\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,10 +33,14 @@ if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_STOCKREQUEST']._serialized_start=22
   _globals['_STOCKREQUEST']._serialized_end=108
-  _globals['_PATH']._serialized_start=110
-  _globals['_PATH']._serialized_end=131
-  _globals['_STOCKRESPONSE']._serialized_start=133
-  _globals['_STOCKRESPONSE']._serialized_end=176
-  _globals['_STOCKSERVICE']._serialized_start=178
-  _globals['_STOCKSERVICE']._serialized_end=249
+  _globals['_STOCKHISTORY']._serialized_start=110
+  _globals['_STOCKHISTORY']._serialized_end=158
+  _globals['_STOCKHISTORYRESPONSE']._serialized_start=160
+  _globals['_STOCKHISTORYRESPONSE']._serialized_end=227
+  _globals['_PATH']._serialized_start=229
+  _globals['_PATH']._serialized_end=250
+  _globals['_STOCKRESPONSE']._serialized_start=252
+  _globals['_STOCKRESPONSE']._serialized_end=295
+  _globals['_STOCKSERVICE']._serialized_start=297
+  _globals['_STOCKSERVICE']._serialized_end=368
 # @@protoc_insertion_point(module_scope)

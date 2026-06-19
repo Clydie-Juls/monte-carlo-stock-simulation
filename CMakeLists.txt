@@ -40,7 +40,7 @@ add_custom_target(gen_proto_cpp
 )
 
 add_custom_target(gen_proto_py
-    COMMAND python
+    COMMAND python3
      -m grpc_tools.protoc
      -I ${CMAKE_SOURCE_DIR}/proto
      --python_out=${CMAKE_SOURCE_DIR}/src/generated
